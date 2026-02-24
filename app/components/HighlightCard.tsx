@@ -22,16 +22,23 @@ export default function HighlightCard({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-50px" }}
       transition={{ delay: index * 0.1, duration: 0.5 }}
-      whileHover={{ y: -5, scale: 1.02 }}
-      className="group bg-white rounded-xl p-6 shadow-sm border border-gray-200 hover:border-[#c6a75e] hover:shadow-lg transition-all duration-300"
+      whileHover={{ y: -8, scale: 1.02 }}
+      className="group relative rounded-2xl p-6 glass hover:bg-white/[0.06] transition-all duration-500 cursor-default gradient-border"
     >
-      <div className="w-12 h-12 bg-[#c6a75e]/10 rounded-lg flex items-center justify-center mb-4 group-hover:bg-[#c6a75e]/20 transition-colors">
-        <Icon className="w-6 h-6 text-[#c6a75e]" />
+      {/* Hover glow effect */}
+      <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br from-[#c6a75e]/[0.08] to-transparent" />
+
+      <div className="relative z-10">
+        <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-[#c6a75e]/20 to-[#c6a75e]/5 flex items-center justify-center mb-5 group-hover:animate-pulse-glow transition-all duration-500">
+          <Icon className="w-6 h-6 text-[#c6a75e]" />
+        </div>
+        <h3 className="font-serif text-xl font-semibold text-[#e8e4dd] mb-3 group-hover:text-[#c6a75e] transition-colors duration-300">
+          {title}
+        </h3>
+        <p className="text-[#e8e4dd]/50 text-sm leading-relaxed">
+          {description}
+        </p>
       </div>
-      <h3 className="font-serif text-xl font-semibold text-[#1e293b] mb-2 group-hover:text-[#c6a75e] transition-colors">
-        {title}
-      </h3>
-      <p className="text-gray-600 text-sm leading-relaxed">{description}</p>
     </motion.div>
   );
 }
