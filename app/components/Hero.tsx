@@ -24,7 +24,7 @@ const title = "Sahithyotsav";
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden paper-texture page-edge">
+    <section className="relative py-20 md:py-40 flex items-center justify-center overflow-hidden paper-texture page-edge">
       {/* Vignette edges for old book feel */}
       <div className="absolute inset-0 pointer-events-none" style={{
         background: "radial-gradient(ellipse at center, transparent 50%, rgba(44, 24, 16, 0.06) 100%)"
@@ -61,9 +61,9 @@ export default function Hero() {
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.2, duration: 0.6 }}
-            className="inline-block px-5 py-2 mb-8 text-sm font-medium text-[#8b6914] glass rounded-full tracking-wider uppercase"
+            className="inline-block px-5 py-2 mb-5 md:mb-8 text-sm font-medium text-[#8b6914] glass rounded-full tracking-wider uppercase"
           >
-            March 13 – 14, 2026
+            March 13 - 14, 2026
           </motion.span>
 
           {/* Main title with character-by-character reveal */}
@@ -99,7 +99,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.4, duration: 0.8 }}
-            className="text-base sm:text-lg text-[#7a6b5d] mb-10 max-w-2xl mx-auto leading-relaxed"
+            className="text-base sm:text-lg text-[#7a6b5d] mb-5 md:mb-10 max-w-2xl mx-auto leading-relaxed"
           >
             A two-day literary fest bringing together debates, poetry,
             discussions, and stories that inspire and transform.
@@ -110,7 +110,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.6, duration: 0.8 }}
-            className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 mb-10"
+            className="flex items-center justify-center gap-4 sm:gap-6 mb-5 md:mb-10"
           >
             <div className="flex items-center gap-2 text-[#7a6b5d]">
               <Calendar size={18} className="text-[#8b6914]" />
@@ -119,7 +119,7 @@ export default function Hero() {
             <div className="hidden sm:block w-1.5 h-1.5 bg-[#8b6914]/40 rounded-full" />
             <div className="flex items-center gap-2 text-[#7a6b5d]">
               <MapPin size={18} className="text-[#8b6914]" />
-              <span className="text-sm font-medium">College Name</span>
+              <span className="text-sm font-medium">CVR College Of Engineering</span>
             </div>
           </motion.div>
 
@@ -132,7 +132,7 @@ export default function Hero() {
           >
             <Link
               href="/schedule"
-              className="group relative w-full sm:w-auto px-8 py-4 overflow-hidden rounded-xl font-medium text-[#fffdf7] transition-all duration-500 shadow-lg hover:shadow-xl hover:-translate-y-0.5"
+              className="group relative w-full sm:w-auto px-8 py-3 md:py-4 overflow-hidden rounded-xl font-medium text-[#fffdf7] transition-all duration-500 shadow-lg hover:shadow-xl hover:-translate-y-0.5"
             >
               <div className="absolute inset-0 bg-gradient-to-r from-[#2c1810] to-[#4a3020] transition-all duration-500 group-hover:from-[#1a0f08] group-hover:to-[#2c1810]" />
               <span className="relative z-10 flex items-center justify-center gap-2">
@@ -141,7 +141,7 @@ export default function Hero() {
             </Link>
             <Link
               href="/register"
-              className="group w-full sm:w-auto px-8 py-4 rounded-xl font-medium text-[#2c1810] border-2 border-[#2c1810] hover:bg-[#2c1810] hover:text-[#fffdf7] transition-all duration-300 text-center"
+              className="group w-full sm:w-auto px-8 py-3 md:py-4 rounded-xl font-medium text-[#2c1810] border-2 border-[#2c1810] hover:bg-[#2c1810] hover:text-[#fffdf7] transition-all duration-300 text-center"
             >
               Register Now
             </Link>
@@ -154,7 +154,7 @@ export default function Hero() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 2.5, duration: 1 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2"
+        className="absolute bottom-4 md:bottom-8 left-1/2 -translate-x-1/2"
       >
         <div className="w-6 h-10 border-2 border-[#2c1810]/20 rounded-full flex justify-center">
           <motion.div

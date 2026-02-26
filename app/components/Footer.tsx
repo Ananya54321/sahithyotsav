@@ -62,11 +62,11 @@ export default function Footer() {
               </li>
               <li className="flex items-center gap-3 text-[#a89880] text-sm">
                 <MapPin size={16} className="text-[#c6a75e]/60 flex-shrink-0" />
-                <span>College Name, City</span>
+                <span>CVR College Of Engineering, Ibrahimpatnam</span>
               </li>
               <li className="flex items-center gap-3 text-[#a89880] text-sm">
                 <Mail size={16} className="text-[#c6a75e]/60 flex-shrink-0" />
-                <span>sahithyotsav@college.edu</span>
+                <span>cvrldc@gmail.com</span>
               </li>
             </ul>
           </div>
