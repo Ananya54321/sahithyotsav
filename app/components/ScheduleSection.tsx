@@ -24,10 +24,10 @@ export default function ScheduleSection({
       className="mb-16 last:mb-0"
     >
       <div className="flex items-center gap-4 mb-8">
-        <div className="w-12 h-12 bg-gradient-to-br from-[#c6a75e] to-[#8b6914] rounded-full flex items-center justify-center text-[#0a0e1a] font-bold shadow-[0_0_15px_rgba(198,167,94,0.3)]">
+        <div className="w-12 h-12 bg-gradient-to-br from-[#8b6914] to-[#6b4f10] rounded-full flex items-center justify-center text-[#fffdf7] font-bold shadow-lg font-serif text-lg">
           {dayIndex + 1}
         </div>
-        <h2 className="font-serif text-2xl sm:text-3xl font-bold text-[#e8e4dd]">
+        <h2 className="font-serif text-2xl sm:text-3xl font-bold text-[#2c1810]">
           {day}
         </h2>
       </div>

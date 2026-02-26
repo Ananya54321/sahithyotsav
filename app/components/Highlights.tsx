@@ -8,11 +8,12 @@ import {
   HelpCircle,
   GraduationCap,
   Wand2,
+  Feather,
+  BookOpen,
 } from "lucide-react";
 import Container from "./Container";
 import HighlightCard from "./HighlightCard";
 import FloatingParticles from "./FloatingParticles";
-import { CornerFlourish } from "./DecorativeSVGs";
 
 const highlights = [
   {
@@ -55,17 +56,14 @@ const highlights = [
 
 export default function Highlights() {
   return (
-    <section className="relative py-24 bg-[#0a0e1a] overflow-hidden">
-      {/* Background glows */}
-      <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-[#c6a75e]/[0.03] rounded-full blur-[150px]" />
-      <div className="absolute top-0 left-0 w-[300px] h-[300px] bg-[#1e293b]/30 rounded-full blur-[120px]" />
+    <section className="relative py-24 paper-texture overflow-hidden page-edge">
+      {/* Scattered background icons for old book feel */}
+      <Feather className="absolute top-8 left-6 w-16 h-16 text-[#8b6914]/[0.06] rotate-[-15deg]" />
+      <BookOpen className="absolute bottom-12 right-8 w-20 h-20 text-[#8b6914]/[0.05] rotate-[10deg]" />
+      <Feather className="absolute top-1/3 right-[5%] w-12 h-12 text-[#8b6914]/[0.04] rotate-[25deg]" />
 
-      {/* Floating particles */}
-      <FloatingParticles count={12} />
-
-      {/* Corner flourishes */}
-      <CornerFlourish className="absolute top-4 left-4 w-24 h-24 sm:w-32 sm:h-32 opacity-30" />
-      <CornerFlourish className="absolute bottom-4 right-4 w-24 h-24 sm:w-32 sm:h-32 rotate-180 opacity-30" />
+      {/* Golden dust particles */}
+      <FloatingParticles count={10} />
 
       <Container>
         <motion.div
@@ -75,13 +73,13 @@ export default function Highlights() {
           transition={{ duration: 0.8 }}
           className="text-center mb-14"
         >
-          <span className="inline-block px-5 py-2 mb-6 text-sm font-medium text-[#c6a75e] glass rounded-full tracking-wider uppercase">
+          <span className="inline-block px-5 py-2 mb-6 text-sm font-medium text-[#8b6914] glass rounded-full tracking-wider uppercase">
             Featured Events
           </span>
-          <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-bold text-[#e8e4dd] mb-4">
+          <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-bold text-ink mb-4">
             Event <span className="text-gold-gradient">Highlights</span>
           </h2>
-          <p className="text-[#e8e4dd]/50 max-w-2xl mx-auto">
+          <p className="text-[#7a6b5d] max-w-2xl mx-auto">
             Discover the diverse range of events that make our literary fest a
             unique celebration of words and ideas.
           </p>

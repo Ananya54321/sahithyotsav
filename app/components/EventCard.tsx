@@ -13,24 +13,20 @@ interface EventCardProps {
 
 const sessionColors = {
   FN: {
-    bg: "bg-blue-500/10",
-    text: "text-blue-400",
-    border: "border-blue-500/20",
+    bg: "bg-amber-50",
+    text: "text-amber-800",
   },
   AN: {
-    bg: "bg-purple-500/10",
-    text: "text-purple-400",
-    border: "border-purple-500/20",
+    bg: "bg-orange-50",
+    text: "text-orange-800",
   },
   Online: {
-    bg: "bg-green-500/10",
-    text: "text-green-400",
-    border: "border-green-500/20",
+    bg: "bg-green-50",
+    text: "text-green-800",
   },
   "Full Day": {
-    bg: "bg-amber-500/10",
-    text: "text-amber-400",
-    border: "border-amber-500/20",
+    bg: "bg-yellow-50",
+    text: "text-yellow-800",
   },
 };
 
@@ -50,7 +46,7 @@ export default function EventCard({
       viewport={{ once: true, margin: "-50px" }}
       transition={{ delay: index * 0.05, duration: 0.4 }}
       whileHover={{ y: -3 }}
-      className="group glass rounded-xl p-5 hover:bg-white/[0.06] transition-all duration-300"
+      className="group rounded-xl p-5 vintage-card transition-all duration-300"
     >
       <div className="flex items-start justify-between gap-4 mb-3">
         <span
@@ -60,17 +56,17 @@ export default function EventCard({
         </span>
       </div>
 
-      <h3 className="font-serif text-lg font-semibold text-[#e8e4dd] mb-3 leading-snug group-hover:text-[#c6a75e] transition-colors duration-300">
+      <h3 className="font-serif text-lg font-semibold text-[#2c1810] mb-3 leading-snug group-hover:text-[#8b6914] transition-colors duration-300">
         {title}
       </h3>
 
       <div className="space-y-2">
-        <div className="flex items-center gap-2 text-[#e8e4dd]/50">
-          <Clock size={14} className="text-[#c6a75e]/60 flex-shrink-0" />
+        <div className="flex items-center gap-2 text-[#7a6b5d]">
+          <Clock size={14} className="text-[#8b6914] flex-shrink-0" />
           <span className="text-sm">{time}</span>
         </div>
-        <div className="flex items-center gap-2 text-[#e8e4dd]/50">
-          <MapPin size={14} className="text-[#c6a75e]/60 flex-shrink-0" />
+        <div className="flex items-center gap-2 text-[#7a6b5d]">
+          <MapPin size={14} className="text-[#8b6914] flex-shrink-0" />
           <span className="text-sm">{venue}</span>
         </div>
       </div>

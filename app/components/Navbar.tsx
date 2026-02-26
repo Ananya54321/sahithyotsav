@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, X } from "lucide-react";
+import { Menu, X, BookOpen } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import Container from "./Container";
 
@@ -35,16 +35,17 @@ export default function Navbar() {
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         isScrolled
-          ? "bg-[#0a0e1a]/80 backdrop-blur-xl shadow-[0_4px_30px_rgba(0,0,0,0.3)] border-b border-[#c6a75e]/10"
-          : "bg-transparent"
+          ? "bg-[#f5f0e8]/95 backdrop-blur-xl shadow-[0_2px_20px_rgba(44,24,16,0.08)] border-b border-[#8b6914]/10"
+          : "bg-[#f5f0e8]/80 backdrop-blur-md"
       }`}
     >
       <Container>
         <div className="flex items-center justify-between h-16 sm:h-18">
           <Link
             href="/"
-            className="font-serif text-xl sm:text-2xl font-semibold text-[#c6a75e] hover:text-[#d4b96e] transition-colors duration-300"
+            className="flex items-center gap-2 font-serif text-xl sm:text-2xl font-semibold text-[#2c1810] hover:text-[#8b6914] transition-colors duration-300"
           >
+            <BookOpen size={22} className="text-[#8b6914]" />
             Sahithyotsav
           </Link>
 
@@ -55,15 +56,15 @@ export default function Navbar() {
                 href={link.href}
                 className={`relative text-sm font-medium tracking-wide uppercase transition-colors duration-300 ${
                   pathname === link.href
-                    ? "text-[#c6a75e]"
-                    : "text-[#e8e4dd]/70 hover:text-[#c6a75e]"
+                    ? "text-[#8b6914]"
+                    : "text-[#2c1810]/60 hover:text-[#8b6914]"
                 }`}
               >
                 {link.label}
                 {pathname === link.href && (
                   <motion.span
                     layoutId="navbar-indicator"
-                    className="absolute -bottom-1 left-0 right-0 h-[2px] bg-gradient-to-r from-[#c6a75e] to-[#8b6914]"
+                    className="absolute -bottom-1 left-0 right-0 h-[2px] bg-gradient-to-r from-[#8b6914] to-[#c6a75e]"
                     initial={false}
                     transition={{
                       type: "spring",
@@ -78,7 +79,7 @@ export default function Navbar() {
 
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="md:hidden p-2 text-[#c6a75e] hover:text-[#d4b96e] transition-colors"
+            className="md:hidden p-2 text-[#2c1810] hover:text-[#8b6914] transition-colors"
             aria-label="Toggle menu"
           >
             {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -93,7 +94,7 @@ export default function Navbar() {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3, ease: "easeInOut" }}
-            className="md:hidden bg-[#0a0e1a]/95 backdrop-blur-xl border-t border-[#c6a75e]/10"
+            className="md:hidden bg-[#f5f0e8]/98 backdrop-blur-xl border-t border-[#8b6914]/10"
           >
             <Container>
               <div className="py-4 space-y-1">
@@ -108,8 +109,8 @@ export default function Navbar() {
                       href={link.href}
                       className={`block py-3 px-4 text-sm font-medium tracking-wide uppercase rounded-lg transition-all duration-300 ${
                         pathname === link.href
-                          ? "text-[#c6a75e] bg-[#c6a75e]/10"
-                          : "text-[#e8e4dd]/70 hover:text-[#c6a75e] hover:bg-[#c6a75e]/5"
+                          ? "text-[#8b6914] bg-[#8b6914]/10"
+                          : "text-[#2c1810]/60 hover:text-[#8b6914] hover:bg-[#8b6914]/5"
                       }`}
                     >
                       {link.label}

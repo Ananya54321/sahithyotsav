@@ -1,17 +1,18 @@
 @import "tailwindcss";
 
 @theme {
-  --color-background: #0a0e1a;
-  --color-foreground: #e8e4dd;
-  --color-primary: #e8e4dd;
-  --color-accent: #c6a75e;
-  --color-accent-light: #d4b96e;
-  --color-accent-dark: #8b6914;
-  --color-muted: #9ca3af;
-  --color-card: rgba(255, 255, 255, 0.04);
-  --color-card-border: rgba(198, 167, 94, 0.15);
-  --color-surface: #111827;
-  --color-surface-light: #1f2937;
+  --color-background: #f5f0e8;
+  --color-foreground: #2c1810;
+  --color-primary: #2c1810;
+  --color-accent: #8b6914;
+  --color-accent-light: #c6a75e;
+  --color-accent-dark: #6b4f10;
+  --color-muted: #7a6b5d;
+  --color-card: rgba(255, 253, 247, 0.85);
+  --color-card-border: rgba(139, 105, 20, 0.15);
+  --color-surface: #fffdf7;
+  --color-surface-light: #f8f3e9;
+  --color-ink: #1a0f08;
 
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
   --font-serif: var(--font-playfair), ui-serif, Georgia, serif;
@@ -22,15 +23,16 @@ html {
 }
 
 body {
-  background-color: #0a0e1a;
-  color: #e8e4dd;
+  background-color: #e9d7ba;
+  background-image: url("/cartographer.png");
+  color: #2c1810;
   line-height: 1.6;
   overflow-x: hidden;
 }
 
 ::selection {
-  background-color: #c6a75e;
-  color: #0a0e1a;
+  background-color: #8b6914;
+  color: #fffdf7;
 }
 
 ::-webkit-scrollbar {
@@ -38,43 +40,61 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: #0a0e1a;
+  background: #f5f0e8;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, #c6a75e, #8b6914);
+  background: linear-gradient(180deg, #8b6914, #6b4f10);
   border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, #d4b96e, #c6a75e);
+  background: linear-gradient(180deg, #c6a75e, #8b6914);
 }
 
 input:focus,
 textarea:focus,
 select:focus {
   outline: none;
-  box-shadow: 0 0 0 2px rgba(198, 167, 94, 0.3);
+  box-shadow: 0 0 0 2px rgba(139, 105, 20, 0.25);
 }
 
-/* === Glassmorphism utility === */
+/* === Old parchment paper texture === */
+.paper-texture {
+  background-color: #f5f0e8;
+  background-image: url("/cartographer.png");
+}
+
+.paper-texture-dark {
+  background-color: #ebe3d3;
+  background-image: url("/cartographer.png");
+}
+
+/* === Vintage page edge shadow === */
+.page-edge {
+  box-shadow:
+    inset 0 0 60px rgba(139, 105, 20, 0.08),
+    inset 0 0 120px rgba(139, 105, 20, 0.04);
+}
+
+/* === Glassmorphism (parchment style) === */
 .glass {
-  background: rgba(255, 255, 255, 0.03);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(198, 167, 94, 0.1);
+  background: rgba(255, 253, 247, 0.82);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(139, 105, 20, 0.15);
 }
 
 .glass-strong {
-  background: rgba(255, 255, 255, 0.06);
+  background: rgba(255, 253, 247, 0.93);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(198, 167, 94, 0.15);
+  border: 1px solid rgba(139, 105, 20, 0.18);
 }
 
-/* === Gold gradient text === */
+/* === Gold / Ink gradient text === */
 .text-gold-gradient {
-  background: linear-gradient(135deg, #d4b96e 0%, #c6a75e 40%, #8b6914 70%, #c6a75e 100%);
+  background: linear-gradient(135deg, #6b4f10 0%, #8b6914 30%, #c6a75e 50%, #8b6914 70%, #6b4f10 100%);
   background-size: 200% 200%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -82,13 +102,56 @@ select:focus {
   animation: gradient-shift 6s ease infinite;
 }
 
+/* === Ink blot text for headings === */
+.text-ink {
+  color: #1a0f08;
+  text-shadow: 0 1px 2px rgba(26, 15, 8, 0.1);
+}
+
 /* === Glow effects === */
 .glow-gold {
-  box-shadow: 0 0 20px rgba(198, 167, 94, 0.15), 0 0 40px rgba(198, 167, 94, 0.05);
+  box-shadow: 0 0 20px rgba(139, 105, 20, 0.1), 0 0 40px rgba(139, 105, 20, 0.05);
 }
 
 .glow-gold-strong {
-  box-shadow: 0 0 30px rgba(198, 167, 94, 0.25), 0 0 60px rgba(198, 167, 94, 0.1);
+  box-shadow: 0 0 30px rgba(139, 105, 20, 0.2), 0 0 60px rgba(139, 105, 20, 0.08);
+}
+
+/* === Chapter/Section separator line (book-style) === */
+.chapter-rule {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.chapter-rule::before,
+.chapter-rule::after {
+  content: "";
+  height: 1px;
+  flex: 1;
+  background: linear-gradient(to var(--dir, right), rgba(139, 105, 20, 0.3), transparent);
+}
+
+.chapter-rule::after {
+  --dir: left;
+}
+
+/* === Vintage card (on parchment) === */
+.vintage-card {
+  background: rgba(255, 253, 247, 0.92);
+  border: 1px solid rgba(139, 105, 20, 0.14);
+  box-shadow:
+    0 1px 3px rgba(139, 105, 20, 0.08),
+    0 4px 12px rgba(139, 105, 20, 0.05);
+}
+
+.vintage-card:hover {
+  box-shadow:
+    0 4px 12px rgba(139, 105, 20, 0.1),
+    0 8px 24px rgba(139, 105, 20, 0.06);
+  border-color: rgba(139, 105, 20, 0.2);
 }
 
 /* === Keyframe animations === */
@@ -112,10 +175,10 @@ select:focus {
 
 @keyframes pulse-glow {
   0%, 100% {
-    box-shadow: 0 0 10px rgba(198, 167, 94, 0.1);
+    box-shadow: 0 0 8px rgba(139, 105, 20, 0.08);
   }
   50% {
-    box-shadow: 0 0 25px rgba(198, 167, 94, 0.3);
+    box-shadow: 0 0 20px rgba(139, 105, 20, 0.2);
   }
 }
 
@@ -125,6 +188,21 @@ select:focus {
   }
   50% {
     transform: translateY(-10px);
+  }
+}
+
+@keyframes page-turn {
+  0% {
+    opacity: 0.3;
+    transform: rotate(-2deg);
+  }
+  50% {
+    opacity: 0.5;
+    transform: rotate(0deg);
+  }
+  100% {
+    opacity: 0.3;
+    transform: rotate(2deg);
   }
 }
 
@@ -152,9 +230,41 @@ select:focus {
   inset: 0;
   border-radius: inherit;
   padding: 1px;
-  background: linear-gradient(135deg, rgba(198, 167, 94, 0.3), rgba(198, 167, 94, 0.05), rgba(198, 167, 94, 0.2));
+  background: linear-gradient(135deg, rgba(139, 105, 20, 0.3), rgba(139, 105, 20, 0.06), rgba(139, 105, 20, 0.2));
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
   pointer-events: none;
+}
+
+/* === Decorative corner bracket (for cards) === */
+.corner-bracket {
+  position: relative;
+}
+
+.corner-bracket::before,
+.corner-bracket::after {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-color: rgba(139, 105, 20, 0.2);
+  pointer-events: none;
+}
+
+.corner-bracket::before {
+  top: -1px;
+  left: -1px;
+  border-top: 2px solid;
+  border-left: 2px solid;
+  border-color: inherit;
+}
+
+.corner-bracket::after {
+  bottom: -1px;
+  right: -1px;
+  border-bottom: 2px solid;
+  border-left: 0;
+  border-right: 2px solid;
+  border-color: inherit;
 }
