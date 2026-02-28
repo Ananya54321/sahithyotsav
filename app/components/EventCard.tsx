@@ -11,33 +11,15 @@ interface EventCardProps {
   index: number;
 }
 
-const sessionColors = {
-  FN: {
-    bg: "bg-amber-50",
-    text: "text-amber-800",
-  },
-  AN: {
-    bg: "bg-orange-50",
-    text: "text-orange-800",
-  },
-  Online: {
-    bg: "bg-green-50",
-    text: "text-green-800",
-  },
-  "Full Day": {
-    bg: "bg-yellow-50",
-    text: "text-yellow-800",
-  },
+const sessionBadges = {
+  FN: { label: "Forenoon", classes: "badge-purple" },
+  AN: { label: "Afternoon", classes: "badge-gold" },
+  Online: { label: "Online", classes: "badge-purple" },
+  "Full Day": { label: "Full Day", classes: "badge-gold" },
 };
 
-export default function EventCard({
-  session,
-  time,
-  title,
-  venue,
-  index,
-}: EventCardProps) {
-  const colors = sessionColors[session];
+export default function EventCard({ session, time, title, venue, index }: EventCardProps) {
+  const badge = sessionBadges[session];
 
   return (
     <motion.div
@@ -45,29 +27,33 @@ export default function EventCard({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-50px" }}
       transition={{ delay: index * 0.05, duration: 0.4 }}
-      whileHover={{ y: -3 }}
-      className="group rounded-xl p-5 vintage-card transition-all duration-300"
+      whileHover={{ y: -4 }}
+      className="group bg-white rounded-2xl overflow-hidden border border-[#2d006b]/10 shadow-[0_2px_12px_rgba(45,0,107,0.06)] hover:shadow-[0_8px_30px_rgba(45,0,107,0.14)] transition-all duration-300"
     >
-      <div className="flex items-start justify-between gap-4 mb-3">
-        <span
-          className={`inline-flex px-3 py-1 text-xs font-semibold rounded-full ${colors.bg} ${colors.text}`}
-        >
-          {session}
-        </span>
-      </div>
+      {/* Purple top bar */}
+      <div className="h-1.5 bg-gradient-to-r from-[#2d006b] to-[#5a00c8] group-hover:from-[#f1cd76] group-hover:to-[#d0a651] transition-all duration-500" />
 
-      <h3 className="font-serif text-lg font-semibold text-[#2c1810] mb-3 leading-snug group-hover:text-[#8b6914] transition-colors duration-300">
-        {title}
-      </h3>
-
-      <div className="space-y-2">
-        <div className="flex items-center gap-2 text-[#7a6b5d]">
-          <Clock size={14} className="text-[#8b6914] flex-shrink-0" />
-          <span className="text-sm">{time}</span>
+      <div className="p-5">
+        <div className="mb-3">
+          <span className={badge.classes}>{badge.label}</span>
         </div>
-        <div className="flex items-center gap-2 text-[#7a6b5d]">
-          <MapPin size={14} className="text-[#8b6914] flex-shrink-0" />
-          <span className="text-sm">{venue}</span>
+
+        <h3
+          className="font-black uppercase text-sm tracking-wide text-[#1a0040] mb-3 leading-snug group-hover:text-[#2d006b] transition-colors duration-300"
+          style={{ fontFamily: "var(--font-montserrat)" }}
+        >
+          {title}
+        </h3>
+
+        <div className="space-y-1.5">
+          <div className="flex items-center gap-2 text-[#6b5f8a] text-sm">
+            <Clock size={13} className="text-[#cbb386] flex-shrink-0" />
+            <span>{time}</span>
+          </div>
+          <div className="flex items-center gap-2 text-[#6b5f8a] text-sm">
+            <MapPin size={13} className="text-[#cbb386] flex-shrink-0" />
+            <span>{venue}</span>
+          </div>
         </div>
       </div>
     </motion.div>

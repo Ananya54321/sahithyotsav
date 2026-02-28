@@ -19,10 +19,7 @@ export default function Navbar() {
   const pathname = usePathname();
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
-
+    const handleScroll = () => setIsScrolled(window.scrollY > 10);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -33,53 +30,60 @@ export default function Navbar() {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 overflow-visible ${
         isScrolled
-          ? "bg-[#f5f0e8]/95 backdrop-blur-xl shadow-[0_2px_20px_rgba(44,24,16,0.08)] border-b border-[#8b6914]/10"
-          : "bg-[#f5f0e8]/80 backdrop-blur-md"
+          ? "bg-[#2d006b] shadow-[0_4px_20px_rgba(0,0,0,0.3)]"
+          : "bg-[#2d006b]"
       }`}
     >
       <Container>
-        <div className="flex items-center justify-between h-16 sm:h-18">
-          <Link
-            href="/"
-            className="flex items-center gap-2 font-serif text-xl sm:text-2xl font-semibold text-[#2c1810] hover:text-[#8b6914] transition-colors duration-300"
-          >
-            <BookOpen size={22} className="text-[#8b6914]" />
-            Sahithyotsav
+        <div className="flex items-center justify-between h-16">
+          {/* Logo */}
+          <Link href="/" className="flex items-center gap-2.5 group">
+            <div className="w-8 h-8 rounded-full bg-gradient-to-br from-[#f1cd76] to-[#d0a651] flex items-center justify-center">
+              <BookOpen size={16} className="text-[#2d006b]" />
+            </div>
+            <span
+              className="text-white font-black text-lg tracking-tight"
+              style={{ fontFamily: "var(--font-montserrat)" }}
+            >
+              SAHITHYOTSAV
+            </span>
           </Link>
 
-          <div className="hidden md:flex items-center space-x-8">
+          {/* Desktop links */}
+          <div className="hidden md:flex items-center gap-8">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className={`relative text-sm font-medium tracking-wide uppercase transition-colors duration-300 ${
-                  pathname === link.href
-                    ? "text-[#8b6914]"
-                    : "text-[#2c1810]/60 hover:text-[#8b6914]"
-                }`}
+                className="relative text-xs font-bold tracking-[0.15em] uppercase text-white/80 hover:text-white transition-colors duration-200"
+                style={{ fontFamily: "var(--font-montserrat)" }}
               >
                 {link.label}
                 {pathname === link.href && (
                   <motion.span
-                    layoutId="navbar-indicator"
-                    className="absolute -bottom-1 left-0 right-0 h-[2px] bg-gradient-to-r from-[#8b6914] to-[#c6a75e]"
+                    layoutId="nav-active-line"
+                    className="absolute -bottom-1 left-0 right-0 h-[2px] bg-linear-to-r from-[#f1cd76] to-[#d0a651] rounded-full"
                     initial={false}
-                    transition={{
-                      type: "spring",
-                      stiffness: 500,
-                      damping: 30,
-                    }}
+                    transition={{ type: "spring", stiffness: 500, damping: 30 }}
                   />
                 )}
               </Link>
             ))}
+            <Link
+              href="/register"
+              className="btn-gold text-xs px-5 py-2.5"
+              style={{ fontFamily: "var(--font-montserrat)" }}
+            >
+              Register Now
+            </Link>
           </div>
 
+          {/* Mobile toggle */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="md:hidden p-2 text-[#2c1810] hover:text-[#8b6914] transition-colors"
+            className="md:hidden p-2 text-white hover:text-[#cbb386] transition-colors"
             aria-label="Toggle menu"
           >
             {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -87,36 +91,43 @@ export default function Navbar() {
         </div>
       </Container>
 
+      {/* Mobile menu */}
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.3, ease: "easeInOut" }}
-            className="md:hidden bg-[#f5f0e8]/98 backdrop-blur-xl border-t border-[#8b6914]/10"
+            transition={{ duration: 0.25 }}
+            className="md:hidden bg-[#1a0040] border-t border-white/10"
           >
             <Container>
-              <div className="py-4 space-y-1">
-                {navLinks.map((link, index) => (
+              <div className="py-5 space-y-1">
+                {navLinks.map((link, i) => (
                   <motion.div
                     key={link.href}
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: index * 0.1, duration: 0.3 }}
+                    transition={{ delay: i * 0.07 }}
                   >
                     <Link
                       href={link.href}
-                      className={`block py-3 px-4 text-sm font-medium tracking-wide uppercase rounded-lg transition-all duration-300 ${
+                      className={`block py-3 px-4 rounded-lg text-xs font-bold tracking-[0.15em] uppercase transition-all duration-200 ${
                         pathname === link.href
-                          ? "text-[#8b6914] bg-[#8b6914]/10"
-                          : "text-[#2c1810]/60 hover:text-[#8b6914] hover:bg-[#8b6914]/5"
+                          ? "text-[#cbb386] bg-white/5"
+                          : "text-white/70 hover:text-white hover:bg-white/5"
                       }`}
+                      style={{ fontFamily: "var(--font-montserrat)" }}
                     >
                       {link.label}
                     </Link>
                   </motion.div>
                 ))}
+                <div className="pt-3">
+                  <Link href="/register" className="btn-gold w-full">
+                    Register Now
+                  </Link>
+                </div>
               </div>
             </Container>
           </motion.div>

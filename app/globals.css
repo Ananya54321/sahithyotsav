@@ -1,21 +1,18 @@
 @import "tailwindcss";
 
 @theme {
-  --color-background: #f5f0e8;
-  --color-foreground: #2c1810;
-  --color-primary: #2c1810;
-  --color-accent: #8b6914;
-  --color-accent-light: #c6a75e;
-  --color-accent-dark: #6b4f10;
-  --color-muted: #7a6b5d;
-  --color-card: rgba(255, 253, 247, 0.85);
-  --color-card-border: rgba(139, 105, 20, 0.15);
-  --color-surface: #fffdf7;
-  --color-surface-light: #f8f3e9;
-  --color-ink: #1a0f08;
+  --color-background: #ffffff;
+  --color-foreground: #1a0040;
+  --color-primary: #2d006b;
+  --color-primary-dark: #1a0040;
+  --color-primary-light: #3d1080;
+  --color-accent: #cbb386;
+  --color-accent-gold: #d4a843;
+  --color-muted: #6b5f8a;
+  --color-surface: #f5f5f5;
 
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
-  --font-serif: var(--font-playfair), ui-serif, Georgia, serif;
+  --font-display: var(--font-montserrat), ui-sans-serif, system-ui, sans-serif;
 }
 
 html {
@@ -23,16 +20,15 @@ html {
 }
 
 body {
-  background-color: #e9d7ba;
-  background-image: url("/cartographer.png");
-  color: #2c1810;
+  background-color: #ffffff;
+  color: #1a0040;
   line-height: 1.6;
   overflow-x: hidden;
 }
 
 ::selection {
-  background-color: #8b6914;
-  color: #fffdf7;
+  background-color: #2d006b;
+  color: #ffffff;
 }
 
 ::-webkit-scrollbar {
@@ -40,231 +36,395 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: #f5f0e8;
+  background: #f5f5f5;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, #8b6914, #6b4f10);
+  background: #2d006b;
   border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, #c6a75e, #8b6914);
+  background: #cbb386;
 }
 
 input:focus,
 textarea:focus,
 select:focus {
   outline: none;
-  box-shadow: 0 0 0 2px rgba(139, 105, 20, 0.25);
+  box-shadow: 0 0 0 3px rgba(45, 0, 107, 0.15);
 }
 
-/* === Old parchment paper texture === */
-.paper-texture {
-  background-color: #f5f0e8;
-  background-image: url("/cartographer.png");
-}
+/* ============================================
+   ALL CUSTOM COMPONENT CLASSES
+   Wrapped in @layer components so Tailwind v4
+   includes them in the output CSS bundle.
+   ============================================ */
+@layer components {
 
-.paper-texture-dark {
-  background-color: #ebe3d3;
-  background-image: url("/cartographer.png");
-}
-
-/* === Vintage page edge shadow === */
-.page-edge {
-  box-shadow:
-    inset 0 0 60px rgba(139, 105, 20, 0.08),
-    inset 0 0 120px rgba(139, 105, 20, 0.04);
-}
-
-/* === Glassmorphism (parchment style) === */
-.glass {
-  background: rgba(255, 253, 247, 0.82);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  border: 1px solid rgba(139, 105, 20, 0.15);
-}
-
-.glass-strong {
-  background: rgba(255, 253, 247, 0.93);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(139, 105, 20, 0.18);
-}
-
-/* === Gold / Ink gradient text === */
-.text-gold-gradient {
-  background: linear-gradient(135deg, #6b4f10 0%, #8b6914 30%, #c6a75e 50%, #8b6914 70%, #6b4f10 100%);
-  background-size: 200% 200%;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  animation: gradient-shift 6s ease infinite;
-}
-
-/* === Ink blot text for headings === */
-.text-ink {
-  color: #1a0f08;
-  text-shadow: 0 1px 2px rgba(26, 15, 8, 0.1);
-}
-
-/* === Glow effects === */
-.glow-gold {
-  box-shadow: 0 0 20px rgba(139, 105, 20, 0.1), 0 0 40px rgba(139, 105, 20, 0.05);
-}
-
-.glow-gold-strong {
-  box-shadow: 0 0 30px rgba(139, 105, 20, 0.2), 0 0 60px rgba(139, 105, 20, 0.08);
-}
-
-/* === Chapter/Section separator line (book-style) === */
-.chapter-rule {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-}
-
-.chapter-rule::before,
-.chapter-rule::after {
-  content: "";
-  height: 1px;
-  flex: 1;
-  background: linear-gradient(to var(--dir, right), rgba(139, 105, 20, 0.3), transparent);
-}
-
-.chapter-rule::after {
-  --dir: left;
-}
-
-/* === Vintage card (on parchment) === */
-.vintage-card {
-  background: rgba(255, 253, 247, 0.92);
-  border: 1px solid rgba(139, 105, 20, 0.14);
-  box-shadow:
-    0 1px 3px rgba(139, 105, 20, 0.08),
-    0 4px 12px rgba(139, 105, 20, 0.05);
-}
-
-.vintage-card:hover {
-  box-shadow:
-    0 4px 12px rgba(139, 105, 20, 0.1),
-    0 8px 24px rgba(139, 105, 20, 0.06);
-  border-color: rgba(139, 105, 20, 0.2);
-}
-
-/* === Keyframe animations === */
-@keyframes gradient-shift {
-  0%, 100% {
-    background-position: 0% 50%;
+  /* ==========================================
+     CADBURY GOLD BUTTON
+     ========================================== */
+  .btn-gold {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 14px 36px;
+    border-radius: 9999px;
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 0.875rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #2d006b;
+    background: linear-gradient(90deg, #f1cd76 2%, #ffecb2 42%, #d0a651 71%, #ffecb2 100%);
+    background-size: 200% auto;
+    border: none;
+    cursor: pointer;
+    transition: background-position 0.4s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 4px 15px rgba(209, 166, 81, 0.35);
+    text-decoration: none;
   }
-  50% {
-    background-position: 100% 50%;
-  }
-}
 
-@keyframes shimmer {
-  0% {
-    background-position: -200% 0;
+  .btn-gold:hover {
+    background-position: right center;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(209, 166, 81, 0.5);
   }
-  100% {
-    background-position: 200% 0;
-  }
-}
 
-@keyframes pulse-glow {
-  0%, 100% {
-    box-shadow: 0 0 8px rgba(139, 105, 20, 0.08);
+  .btn-gold:active {
+    transform: translateY(0);
   }
-  50% {
-    box-shadow: 0 0 20px rgba(139, 105, 20, 0.2);
+
+  /* ==========================================
+     PURPLE OUTLINE BUTTON
+     ========================================== */
+  .btn-purple-outline {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 13px 34px;
+    border-radius: 9999px;
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 0.875rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #2d006b;
+    background: transparent;
+    border: 2px solid #2d006b;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
   }
+
+  .btn-purple-outline:hover {
+    background: #2d006b;
+    color: #ffffff;
+    transform: translateY(-2px);
+  }
+
+  /* White outline on purple bg */
+  .btn-white-outline {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 13px 34px;
+    border-radius: 9999px;
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 0.875rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #ffffff;
+    background: transparent;
+    border: 2px solid rgba(255,255,255,0.6);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+  }
+
+  .btn-white-outline:hover {
+    background: rgba(255,255,255,0.12);
+    border-color: white;
+    transform: translateY(-2px);
+  }
+
+  /* ==========================================
+     SECTION THEMES
+     ========================================== */
+  .section-purple {
+    background-color: #2d006b;
+    color: #ffffff;
+    position: relative;
+  }
+
+  .section-light {
+    background-color: #f5f5f5;
+    color: #1a0040;
+    position: relative;
+  }
+
+  .section-white {
+    background-color: #ffffff;
+    color: #1a0040;
+    position: relative;
+  }
+
+  /* ==========================================
+     WAVE SVG SEPARATORS
+     ========================================== */
+  .wave-bottom-white {
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+  }
+
+  .wave-bottom-light {
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+  }
+
+  /* ==========================================
+     DISPLAY HEADING STYLES
+     ========================================== */
+  .heading-display {
+    font-family: var(--font-display);
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+    line-height: 1;
+  }
+
+  .heading-section {
+    font-family: var(--font-display);
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    line-height: 1.1;
+  }
+
+  /* ==========================================
+     EYEBROW LABEL (like Cadbury's gold label)
+     ========================================== */
+  .eyebrow-label {
+    display: inline-block;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #cbb386;
+    border-bottom: 2px solid #cbb386;
+    padding-bottom: 2px;
+    margin-bottom: 16px;
+  }
+
+  .eyebrow-label-purple {
+    display: inline-block;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #2d006b;
+    border-bottom: 2px solid #2d006b;
+    padding-bottom: 2px;
+    margin-bottom: 16px;
+  }
+
+  /* ==========================================
+     CADBURY-STYLE CARDS
+     ========================================== */
+  /* Purple split card */
+  .cadbury-card {
+    background: #3d1080;
+    border-radius: 20px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .cadbury-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+  }
+
+  /* Light card on white/grey bg */
+  .royal-card {
+    background: #ffffff;
+    border-radius: 16px;
+    border: 1px solid rgba(45, 0, 107, 0.1);
+    box-shadow: 0 2px 12px rgba(45, 0, 107, 0.06);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .royal-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(45, 0, 107, 0.12);
+    border-color: rgba(45, 0, 107, 0.2);
+  }
+
+  /* Vintage card alias */
+  .vintage-card {
+    background: #ffffff;
+    border-radius: 16px;
+    border: 1px solid rgba(45, 0, 107, 0.1);
+    box-shadow: 0 2px 12px rgba(45, 0, 107, 0.06);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .vintage-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(45, 0, 107, 0.12);
+  }
+
+  /* Gold circle icon container */
+  .icon-circle-gold {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #f1cd76, #d0a651);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  /* Purple circle icon container */
+  .icon-circle-purple {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: rgba(45, 0, 107, 0.12);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  /* ==========================================
+     GRADIENT TEXT CADBURY STYLE
+     ========================================== */
+  .text-gold {
+    color: #cbb386;
+  }
+
+  .text-royal-gradient {
+    background: linear-gradient(135deg, #f1cd76 0%, #cbb386 50%, #d0a651 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .text-gold-gradient {
+    background: linear-gradient(135deg, #f1cd76 0%, #cbb386 50%, #d0a651 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* ==========================================
+     GLASS (purple context)
+     ========================================== */
+  .glass {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  /* ==========================================
+     BADGE / TAG
+     ========================================== */
+  .badge-gold {
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 14px;
+    border-radius: 9999px;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    background: linear-gradient(90deg, #f1cd76, #d0a651);
+    color: #2d006b;
+  }
+
+  .badge-purple {
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 14px;
+    border-radius: 9999px;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    background: #2d006b;
+    color: white;
+  }
+
+  /* ==========================================
+     CHAPTER RULE DIVIDER
+     ========================================== */
+  .chapter-rule {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+  }
+
+  .chapter-rule::before,
+  .chapter-rule::after {
+    content: "";
+    height: 2px;
+    flex: 1;
+    background: linear-gradient(to var(--dir, right), rgba(203, 179, 134, 0.5), transparent);
+  }
+
+  .chapter-rule::after { --dir: left; }
+
+  /* Removed stubs — kept for zero-breaking-change */
+  .gradient-border::before { display: none; }
+  .corner-bracket::before,
+  .corner-bracket::after { display: none; }
+
+} /* end @layer components */
+
+/* ============================================
+   ANIMATIONS (outside @layer — always included)
+   ============================================ */
+@keyframes shimmer-gold {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
 }
 
 @keyframes float {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-10px);
-  }
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
 }
 
-@keyframes page-turn {
-  0% {
-    opacity: 0.3;
-    transform: rotate(-2deg);
-  }
-  50% {
-    opacity: 0.5;
-    transform: rotate(0deg);
-  }
-  100% {
-    opacity: 0.3;
-    transform: rotate(2deg);
-  }
-}
-
-.animate-shimmer {
-  animation: shimmer 3s linear infinite;
-}
-
-.animate-pulse-glow {
-  animation: pulse-glow 3s ease-in-out infinite;
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(209, 168, 67, 0); }
+  50% { box-shadow: 0 0 20px 6px rgba(209, 168, 67, 0.25); }
 }
 
 .animate-float {
   animation: float 6s ease-in-out infinite;
 }
 
-/* === Gradient border wrapper === */
-.gradient-border {
-  position: relative;
-  border-radius: 1rem;
+.animate-pulse-glow {
+  animation: pulse-glow 3s ease-in-out infinite;
 }
 
-.gradient-border::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  padding: 1px;
-  background: linear-gradient(135deg, rgba(139, 105, 20, 0.3), rgba(139, 105, 20, 0.06), rgba(139, 105, 20, 0.2));
-  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-  pointer-events: none;
-}
-
-/* === Decorative corner bracket (for cards) === */
-.corner-bracket {
-  position: relative;
-}
-
-.corner-bracket::before,
-.corner-bracket::after {
-  content: "";
-  position: absolute;
-  width: 20px;
-  height: 20px;
-  border-color: rgba(139, 105, 20, 0.2);
-  pointer-events: none;
-}
-
-.corner-bracket::before {
-  top: -1px;
-  left: -1px;
-  border-top: 2px solid;
-  border-left: 2px solid;
-  border-color: inherit;
-}
-
-.corner-bracket::after {
-  bottom: -1px;
-  right: -1px;
-  border-bottom: 2px solid;
-  border-left: 0;
-  border-right: 2px solid;
-  border-color: inherit;
+.animate-shimmer {
+  animation: shimmer-gold 2.5s linear infinite;
 }

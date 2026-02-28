@@ -1,51 +1,61 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Feather } from "lucide-react";
 import Container from "../components/Container";
 import ScheduleSection from "../components/ScheduleSection";
 import { schedule } from "../data/schedule";
-import FloatingParticles from "../components/FloatingParticles";
-import { OrnamentalDivider } from "../components/DecorativeSVGs";
 
 export default function SchedulePage() {
   return (
-    <div className="relative min-h-screen paper-texture py-16 overflow-hidden page-edge">
-      {/* Vignette */}
-      <div className="absolute inset-0 pointer-events-none" style={{
-        background: "radial-gradient(ellipse at center, transparent 50%, rgba(44, 24, 16, 0.05) 100%)"
-      }} />
+    <div className="flex flex-col min-h-screen">
+      {/* Purple page hero — like Cadbury product pages */}
+      <section className="relative bg-[#2d006b] text-white pt-20 pb-24 text-center overflow-hidden">
+        {/* Inner radial glow */}
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            background:
+              "radial-gradient(ellipse 80% 60% at 50% 0%, rgba(80,0,160,0.4) 0%, transparent 70%)",
+          }}
+        />
+        <Container className="relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7 }}
+          >
+            <span className="eyebrow-label">Event Timeline</span>
+            <h1 className="heading-display text-[clamp(2.5rem,7vw,6rem)] text-[#cbb386] mt-2 mb-4">
+              Festival Schedule
+            </h1>
+            <p className="text-white/70 text-lg max-w-xl mx-auto">
+              Two days packed with literary events, competitions, and inspiring
+              sessions. Plan your fest experience.
+            </p>
+          </motion.div>
+        </Container>
 
-      {/* Scattered background icons */}
-      <Feather className="absolute top-24 right-8 w-20 h-20 text-[#8b6914]/[0.05] rotate-[15deg]" />
-      <Feather className="absolute bottom-20 left-6 w-14 h-14 text-[#8b6914]/[0.04] rotate-[-20deg]" />
+        {/* Wave down to white */}
+        <div className="absolute bottom-0 left-0 w-full overflow-hidden">
+          <svg
+            viewBox="0 0 1440 70"
+            xmlns="http://www.w3.org/2000/svg"
+            preserveAspectRatio="none"
+            className="w-full h-[55px] md:h-[70px]"
+          >
+            <path d="M0,35 C360,70 1080,0 1440,35 L1440,70 L0,70 Z" fill="#ffffff" />
+          </svg>
+        </div>
+      </section>
 
-      <FloatingParticles count={8} />
-
-      <Container>
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="text-center mb-16"
-        >
-          <span className="inline-block px-5 py-2 mb-6 text-sm font-medium text-[#8b6914] glass rounded-full tracking-wider uppercase">
-            Event Timeline
-          </span>
-          <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl font-bold text-ink mb-4">
-            Festival <span className="text-gold-gradient">Schedule</span>
-          </h1>
-          <OrnamentalDivider className="my-6" />
-          <p className="text-[#7a6b5d] text-lg max-w-2xl mx-auto">
-            Two days packed with literary events, competitions, and inspiring
-            sessions. Plan your fest experience with our detailed schedule.
-          </p>
-        </motion.div>
-
-        <div className="relative">
-          <div className="absolute left-6 top-0 bottom-0 w-[2px] bg-gradient-to-b from-[#8b6914]/40 via-[#8b6914]/15 to-transparent hidden md:block" />
-
-          <div className="md:pl-16">
+      {/* White content */}
+      <section className="bg-white grow py-16">
+        <Container>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3, duration: 0.6 }}
+          >
             {schedule.map((day, index) => (
               <ScheduleSection
                 key={day.day}
@@ -54,22 +64,19 @@ export default function SchedulePage() {
                 dayIndex={index}
               />
             ))}
-          </div>
-        </div>
+          </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.5, duration: 0.6 }}
-          className="mt-16 text-center"
-        >
-          <p className="text-[#7a6b5d] text-sm italic">
-            * Schedule is subject to minor changes. Please check back for
-            updates.
-          </p>
-        </motion.div>
-      </Container>
+          <motion.p
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.4 }}
+            className="text-center text-[#6b5f8a] text-sm italic mt-12"
+          >
+            * Schedule is subject to minor changes. Please check back for updates.
+          </motion.p>
+        </Container>
+      </section>
     </div>
   );
 }

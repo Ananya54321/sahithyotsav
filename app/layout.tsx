@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Playfair_Display } from "next/font/google";
+import { Inter, Montserrat } from "next/font/google";
 import "./globals.css";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
@@ -11,11 +11,13 @@ const inter = Inter({
   display: "swap",
 });
 
-const playfair = Playfair_Display({
+const montserrat = Montserrat({
   subsets: ["latin"],
-  variable: "--font-playfair",
+  variable: "--font-montserrat",
+  weight: ["400", "500", "600", "700", "800", "900"],
   display: "swap",
 });
+
 
 export const metadata: Metadata = {
   title: "Sahithyotsav 2026 | A Celebration of Literature",
@@ -45,8 +47,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${playfair.variable}`}>
-      <body className="antialiased min-h-screen flex flex-col font-sans bg-[#f5f0e8] text-[#2c1810]">
+    <html lang="en" className={`${inter.variable} ${montserrat.variable}`}>
+      <body className="antialiased min-h-screen flex flex-col font-sans bg-white text-[#1a0040]">
         <Navbar />
         <main className="flex-grow pt-16">
           {children}
